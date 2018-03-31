@@ -29,9 +29,10 @@ function jster(url) {
     if (curr_month.toString().length==1) { curr_month = '0'+curr_month.toString() ; };
     var curr_year = d.getFullYear();
     var dstr = curr_year+ '-' + curr_month + '-' + curr_date ;
-    var TemplateID ='1FZIjlJP4C18hKlR0WtIVr8bFzKcj3rlEUIwQUDdANWs';
-    if (href.match('drive.google.com/drive/folders')) {
-	var re = 'drive.google.com/drive/folders/([^\/]+)';
+    var TemplateID ='1l05Zm9pa9XtunhyiraozYh0EJ1cRrKledaceSOjWkd8';
+    var longre = /^https\:\/\/drive\.google\.com\/drive\/(u\/0\/)?folders/i;
+    if (href.match(longre)) {
+	var re = 'folders/([^\/]+)';
 	var found = href.match(re);
 	var FOLDER_ID = found[1];
 	str += '<p>Google drive folder: '+FOLDER_ID +'</p>\n';
@@ -66,7 +67,7 @@ function jster(url) {
 	str += 'Template: '+linkster('(here)','https://docs.google.com/document/d/'+TemplateID+'/edit')+'<br>\n';
 	str += '<h4>Folder download (doesnt work in March 2018, apparently worked in 2014)</h4>\n';
 	str += linkster('Download folder','https://drive.google.com/uc?export=download&id='+FOLDER_ID+'');
-    } else if (href.match('docs.google.com')) {
+    } else if (href.match(/^https\:\/\/docs\.google\.com/)) {
 	str += '<p>Google docs/sheets/slides</p>\n';
 	str += '<p>Source: '+linkster(href,'Google doc/sheet/slide') + '</p>\n';
 	str += '<p>Export:</p>\n';
@@ -116,6 +117,7 @@ function jster(url) {
     } else {	    
 	str += 'Sorry, this bookmarklet will only work on Google Drive/Docs/Sheet/Presentations pages.';
     };
+    str += '<p>To find out more, visit <a href=\'https://bjohas.de/go/google-docs-helper-bookmarklet\'>https://bjohas.de/go/google-docs-helper-bookmarklet</a>.</p>';
     var o=window.open('','_blank'); 
     var newdoc=o.document; 
     newdoc.write(str); 
