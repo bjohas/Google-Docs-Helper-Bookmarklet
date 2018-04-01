@@ -1,4 +1,4 @@
-
+javascript:var TID ='1l05Zm9pa9XtunhyiraozYh0EJ1cRrKledaceSOjWkd8';
 function linkster(text,data) { return '<a href=\"'+data+'\">'+text+'</a><br>\n'; };
 function jster(url) {
     var out = 'javascript:(function(){';
@@ -29,7 +29,6 @@ function jster(url) {
     if (curr_month.toString().length==1) { curr_month = '0'+curr_month.toString() ; };
     var curr_year = d.getFullYear();
     var dstr = curr_year+ '-' + curr_month + '-' + curr_date ;
-    var TemplateID ='1l05Zm9pa9XtunhyiraozYh0EJ1cRrKledaceSOjWkd8';
     var longre = /^https\:\/\/drive\.google\.com\/drive\/(u\/0\/)?folders/i;
     if (href.match(longre)) {
 	var re = 'folders/([^\/]+)';
@@ -44,7 +43,7 @@ function jster(url) {
 	str += linkster('+sheet',jster('https://docs.google.com/spreadsheets/create?hl=en&folder='+FOLDER_ID+'&title=Sheet '));
 	str += linkster('+pres',jster('https://docs.google.com/presentation/create?hl=en&folder='+FOLDER_ID+'&title=Slides  '));
 	str += linkster('+draw',jster('https://docs.google.com/drawings/create?hl=en&folder='+FOLDER_ID+'&title=Drawing  '));
-	str += linkster('+docT',jster('https://docs.google.com/document/d/'+TemplateID+'/copy?id='+TemplateID+
+	str += linkster('+docT',jster('https://docs.google.com/document/d/'+TID+'/copy?id='+TID+
 						'&copyCollaborators=false&copyComments=false&usp=docs_web'
 						+ '&copyDestination=' +FOLDER_ID+'&title=Notes '));
 	str += '<h3>Draggable links - plain html</h3>\n';
@@ -53,18 +52,18 @@ function jster(url) {
 	str += linkster('+sheet','https://docs.google.com/spreadsheets/create?hl=en&folder='+FOLDER_ID+'&title=New_Sheet');
 	str += linkster('+pres','https://docs.google.com/presentation/create?hl=en&folder='+FOLDER_ID+'&title=New_Slides ');
 	str += linkster('+draw','https://docs.google.com/drawings/create?hl=en&folder='+FOLDER_ID+'&title=New_Drawing ');
-	str += linkster('+docT','https://docs.google.com/document/d/'+TemplateID
-			+'/copy?id='+TemplateID+'&copyCollaborators=false&copyComments=false&usp=docs_web'
+	str += linkster('+docT','https://docs.google.com/document/d/'+TID
+			+'/copy?id='+TID+'&copyCollaborators=false&copyComments=false&usp=docs_web'
 			+ '&copyDestination=' +FOLDER_ID+'&title=Notes '+dstr);
-	str += 'Template: '+linkster('(here)','https://docs.google.com/document/d/'+TemplateID+'/edit')+'<br>\n';
+	str += 'Template: '+linkster('(here)','https://docs.google.com/document/d/'+TID+'/edit')+'<br>\n';
 	str += '<h4>For use now, with current date, unchanging; title: X_'+dstr+':</h4>\n';
 	str += linkster('+doc','https://docs.google.com/document/create?hl=en&folder='+FOLDER_ID+'&title=Notes '+dstr);
 	str += linkster('+sheet','https://docs.google.com/spreadsheets/create?hl=en&folder='+FOLDER_ID+'&title=Sheet '+dstr);
 	str += linkster('+pres','https://docs.google.com/presentation/create?hl=en&folder='+FOLDER_ID+'&title=Slides '+dstr);
 	str += linkster('+draw','https://docs.google.com/drawings/create?hl=en&folder='+FOLDER_ID+'&title=Drawing '+dstr);
-	str += linkster('+docT','https://docs.google.com/document/d/'+TemplateID+'/copy?id='+TemplateID+'&copyCollaborators=false&copyComments=false'
+	str += linkster('+docT','https://docs.google.com/document/d/'+TID+'/copy?id='+TID+'&copyCollaborators=false&copyComments=false'
 			+ '&copyDestination=' +FOLDER_ID+'&title=Notes '+dstr);
-	str += 'Template: '+linkster('(here)','https://docs.google.com/document/d/'+TemplateID+'/edit')+'<br>\n';
+	str += 'Template: '+linkster('(here)','https://docs.google.com/document/d/'+TID+'/edit')+'<br>\n';
 	str += '<h4>Folder download (doesnt work in March 2018, apparently worked in 2014)</h4>\n';
 	str += linkster('Download folder','https://drive.google.com/uc?export=download&id='+FOLDER_ID+'');
     } else if (href.match(/^https\:\/\/docs\.google\.com/)) {
