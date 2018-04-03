@@ -10,7 +10,7 @@ function jster(url) {
     out += 'var curr_month = d.getMonth(); curr_month++;';
     out += 'if (curr_month.toString().length==1) { curr_month = \'0\'+curr_month.toString() ; };';
     out += 'var curr_year = d.getFullYear();';
-    out += 'var dstr = curr_year+ \'-\' + curr_month + \'-\' + curr_date ;';
+    out += 'var dstr = curr_year+ \'-\' + curr_month + \'-\' + curr_day ;';
     out += 'var url=\''+url+'\'+dstr;';
     out += 'var o=window.open(\'\',\'_blank\'); ';
     out += 'o.location.href = url;';
